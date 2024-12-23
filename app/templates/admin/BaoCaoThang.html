@@ -1,0 +1,124 @@
+{% extends '/admin/base.html' %}
+{% block body %}
+<div class="row">
+    <form action="/baocao">
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label class="input-title">Từ Ngày:</label>
+                <input type="date" name="from_date" placeholer="Thoi gian bat dau..." class="form-control from_date"/>
+            </div>
+            <div class="col-md-6 form-group">
+                <label class="input-title">Đến Ngày:</label>
+                <input type="date" name="to_date" placeholer="Thoi gian ket thuc..." class="form-control to_date"/>
+            </div>
+        </div>
+        <button style="height: 40px; width:100px" type="submit" class="btn btn-warning submit">Thống kê</button>
+    </form>
+    <table class="table table-striped table-bordered table-hover model-list">
+        <thead>
+        <tr>
+            <th class="column-header">STT</th>
+            <th class="column-header">Loại phòng</th>
+            <th class="column-header">Doanh Thu</th>
+            <th class="column-header">Số lượt thuê</th>
+            <th class="column-header">Tỷ lệ</th>
+        </tr>
+        </thead>
+
+        <tbody></tbody>
+    </table>
+
+    <h2>Biểu đồ:</h2>
+    <div class="col-md-7 col-xs-12">
+        <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='lib/chartjs/chartjs.js') }}"></script>
+<script src="{{ url_for('static', filename='lib/chartjs/chartjs-plugin-datalabels.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script>
+    $('button.submit').on('click', (event) => {
+        event.preventDefault()
+
+        let fromDate = $('input.from_date').val()
+        let toDate = $('input.to_date').val()
+
+        $.ajax({
+            type: 'GET',
+            url: `/api/baocaodoanhthu`,
+            data: {
+                'from_date': fromDate,
+                'to_date': toDate
+            },
+            contentType: "application/json; charset=utf-8",
+            traditional: true,
+            success: (json) => {
+                let labels = []
+                let saleData = []
+                let total = json.reduce((accumulator, e) => accumulator + e.doanh_thu, 0)
+                const stats_table = $('table tbody')
+                stats_table.html('')
+
+                $.each(json, (i, e) => {
+                    labels.push(e.loai_phong)
+                    saleData.push(e.doanh_thu)
+
+                    stats_table.append(`
+                        <tr>
+                            <th>${i}</th>
+                            <th>${e.loai_phong}</th>
+                            <th>${e.doanh_thu}</th>
+                            <th>${e.luot_thue}</th>
+                            <th>${(e.doanh_thu * 100 / total).toFixed(2)}%</th>
+                        </tr>
+                    `)
+                })
+
+
+                let data = {
+                    labels: labels,
+                    datasets: [{
+                        data: saleData,
+                        backgroundColor: [
+                            "#4b77a9",
+                            "#5f255f",
+                            "#d21243",
+                            "#B27200"
+                        ],
+                        borderColor: "#fff"
+                    }]
+                }
+
+                let
+                    options = {
+                        tooltips: {
+                            enabled: false
+                        },
+                        plugins: {
+                            datalabels: {
+                                formatter: (value, ctx) => {
+                                    let percentage = (value * 100 / total).toFixed(2) + "%";
+                                    return `${percentage}\n\n${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+                                },
+                                color: '#fff',
+                            }
+                        }
+                    };
+
+                let chartStatus = Chart.getChart("myChart")
+                if (chartStatus) chartStatus.destroy()
+
+
+                new Chart("myChart", {
+                    type: 'pie',
+                    data: data,
+                    options: options,
+                    plugins: [ChartDataLabels]
+                });
+
+
+            }
+        })
+    })
+</script>
+{% endblock %}

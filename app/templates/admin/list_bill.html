@@ -1,0 +1,70 @@
+{% extends '/admin/base.html' %}
+{% block body %}
+<table class="table table-striped table-bordered table-hover model-list">
+    <thead>
+    <tr>
+        <th class="">&nbsp;</th>
+        <th class="column-header">ID phiếu đặt</th>
+        <th class="column-header">ID phiếu thuê</th>
+        <th class="column-header">Tên người đặt</th>
+        <th class="column-header">Ngày đặt phòng</th>
+        <th class="column-header">Ngày trả phòng</th>
+        <th class="column-header">Phòng</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in data %}
+    <tr>
+        <td class="list-buttons-column">
+            <a class="icon a-modals" data-target="#billModal"
+               href="{{ url_for('.bill', id=i['id']) }}"
+               data-toggle="modal">
+                <span class="fa fa-bar-chart"></span>
+            </a>
+        </td>
+        <td>
+            {{i.id}}
+        </td>
+        <td>
+
+            {{i.id_phieu_dat_phong}}
+        </td>
+        <td>
+            {{i.phieu_dat_phong.ten_nguoi_dat}}
+        </td>
+        <td>
+            {{i.phieu_dat_phong.ngay_dat_phong}}
+        </td>
+        <td>
+            {{i.phieu_dat_phong.ngay_tra_phong}}
+        </td>
+        <td>
+            {{ i.phieu_dat_phong.cac_chi_tiet_dat_phong|map(attribute='phong')|map(attribute='ma_phong')|join(', ') }}
+        </td>
+    </tr>
+    {%endfor%}
+    </tbody>
+</table>
+
+<div class="modal fade" id="billModal" tabindex="-1" role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content" style="background-color: white">
+
+        </div>
+    </div>
+</div>
+
+
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script>
+    $(".a-modals").click(function (event) {
+        var url = this.href
+
+        fetch(url, {method: 'GET'})
+            .then(response => response.text())
+            .then(tables => $('.modal-content').html(tables))
+    });
+</script>
+
+{% endblock %}

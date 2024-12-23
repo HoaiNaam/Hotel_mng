@@ -1,0 +1,8 @@
+{% macro booking_row(action, row_id, row) %}
+<form class="icon" method="POST" action="{{ get_url('.booking') }}">
+  <input type="hidden" name="id" value="{{ get_pk_value(row) }}"/>
+  <button onclick="return faHelpers.safeConfirm('Chuyển phiếu đặt này thành phiếu thuê phòng?');" title="Booking record">
+    <span class="fa fa-check-square glyphicon glyphicon-trash"></span>
+  </button>
+</form>
+{% endmacro %}

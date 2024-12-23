@@ -1,0 +1,348 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Trang chủ{% endblock %}
+
+{% block content %}
+    <!-- Booking Start -->
+    <div class="container-xxl py-5">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title text-center text-primary text-uppercase">Đặt phòng</h6>
+            <h1 class="mb-5">Book A <span class="text-primary text-uppercase"> Room</span></h1>
+        </div>
+        <div class="container">
+            <div class="progress px-1" style="height: 3px;">
+                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0"
+                     aria-valuemax="100"></div>
+            </div>
+            <div class="step-container d-flex justify-content-between">
+                <div class="step-circle" onclick="displayStep(1)">1</div>
+                <div class="step-circle" onclick="displayStep(2)">2</div>
+                <div class="step-circle" onclick="displayStep(3)">3</div>
+            </div>
+
+            <form id="multi-step-form">
+                <div class="step step-1">
+                    <!-- Step 1 form fields here -->
+                    <h3>Bước 1: Nhập thông tin đặt phòng</h3>
+                    <div class="row g-3">
+                        <div class="col-md-2">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="last_name" placeholder="Your Name">
+                                <label for="name">Họ</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="first_name" placeholder="Your Name">
+                                <label for="name">Tên</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                <label for="email">Email</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating date" id="date3" data-target-input="nearest">
+                                <input type="date" class="form-control datetimepicker-input" id="checkin"
+                                       placeholder="Check In" data-target="#date3" data-toggle="datetimepicker"/>
+                                <label for="checkin">Ngày đặt phòng</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating date" id="date4" data-target-input="nearest">
+                                <input type="date" class="form-control datetimepicker-input" id="checkout"
+                                       placeholder="Check Out" data-target="#date4" data-toggle="datetimepicker"/>
+                                <label for="checkout"> Ngày trả phòng</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <p>Chọn phòng</p>
+                            <select class="form-select phong" id="multiple-select-optgroup-field"
+                                    data-placeholder="" multiple>
+                                <optgroup label="Phong Thuong">
+                                    {% for phong in phong_trong %}
+                                        {% if phong.loai_phong.name == 'THUONG' %}
+                                            <option class="d-flex justify-content-between" value="{{ phong.id }}">
+                                                <span>{{ phong.ma_phong }}</span>
+                                                <span>{{ phong.don_gia }}</span>
+                                            </option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </optgroup>
+
+                                <optgroup label="Phong Vip">
+                                    {% for phong in phong_trong %}
+                                        {% if phong.loai_phong.name == 'VIP' %}
+                                            <option value="{{ phong.id }}">
+                                                {{ phong.ma_phong }} - {{ phong.don_gia }}
+                                            </option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </optgroup>
+                                <optgroup label="Phong Sieu Vip">
+                                    {% for phong in phong_trong %}
+                                        {% if phong.loai_phong.name == 'SIEUVIP' %}
+                                            <option class="d-flex justify-content-between" value="{{ phong.id }}">
+                                                <span>{{ phong.ma_phong }}</span>
+                                                <span>{{ phong.don_gia }}</span>
+                                            </option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </optgroup>
+                            </select></div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col text-center">
+                                <button type="button" class="btn btn-primary next-step col-md-3">Tiếp theo</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step step-2">
+                    <!-- Step 2 form fields here -->
+                    <h3>Bước 2</h3>
+                    <h4>Thêm khách hàng</h4>
+
+                    <div class="row g-3 them-khach-hang-section">
+                        <div class="col-md-2">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="ho" placeholder="Your Name">
+                                <label for="ho">Họ</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="ten" placeholder="Your Name">
+                                <label for="ten">Tên</label>
+                            </div>
+                        </div>
+                        <select name="loai-khach" id="loai-khach" class="col-md-2">
+                            <option value="NOI_DIA">Nội Địa</option>
+                            <option value="NUOC_NGOAI">Nước Ngoài</option>
+                        </select>
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="cmnd" placeholder="Your Email">
+                                <label for="cmnd">CMND</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="dia-chi" placeholder="Your Email">
+                                <label for="dia-chi">Địa chỉ</label>
+                            </div>
+                        </div>
+                        <select name="phong" id="khach-hang-phong" class="col-md-2">
+                            Chọn phòng
+                        </select>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col text-center">
+                                    <button class="btn btn-primary them-khach-hang">Thêm</button>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table khach-hang">
+                            <thead>
+                            <tr>
+                                <th scope="col">STT</th>
+                                <th scope="col">Họ</th>
+                                <th scope="col">Tên</th>
+                                <th scope="col">Loại Khách</th>
+                                <th scope="col">CMND</th>
+                                <th scope="col">Địa chỉ</th>
+                                <th scope="col">Phòng</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="col text-center">
+                                        <button class="btn btn-primary prev-step col-md-3">Quay lại</button>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="col text-center">
+                                        <button type="button" class="btn btn-primary confirm-step next-step col-md-3">
+                                            Tiếp
+                                            theo
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step step-3">
+                    <!-- Step 3 form fields here -->
+                    <h3>Bước 3</h3>
+                    <h4>Xác nhận tất cả thông tin</h4>
+                    <h5>Tổng tiền thanh toán:</h5>
+                    <span class="total"> </span>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="col text-center">
+                                    <button class="btn btn-primary prev-step col-md-3">Quay lại</button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="col text-center">
+                                    <button type="submit" class="btn btn-success submit">Xác Nhận</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/select2.min.js') }}"></script>
+    <link href="{{ url_for('static', filename='css/select2-bootstrap-5-theme.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/select2.min.css') }}" rel="stylesheet">
+    <!-- Booking End -->
+
+    <script>
+        $('select.phong').on('change', function () {
+            $('select#khach-hang-phong').html('')
+
+            $.each($('select.phong').find(":selected"), (i, e) => {
+                let opt = $(e)
+                $('select#khach-hang-phong').append(`
+                <option value="${opt.val()}">${opt.text()}</option>
+            `)
+            })
+        })
+        {#lấy ra danh sách phòng đã chọn, lấy ra data phòng theo từng khách hàng đã chọn#}
+        $('button.them-khach-hang').on('click', (event) => {
+            event.preventDefault()
+
+            let tkhSection = $('.them-khach-hang-section')
+            let phong = tkhSection.find('select#khach-hang-phong').val()
+            let so_nguoi_toi_da = {{ so_nguoi | safe }}
+
+            let count_so_khach_loai_phong_nay = 0
+            $('table.khach-hang tbody tr').each(function () {
+                let td = $(this).find('td')
+                let id_phong = $(td[5]).text()
+                if (id_phong === phong)
+                    count_so_khach_loai_phong_nay++
+            })
+            {#Bắt dữ liệu thêm khách hàng, lấy ra phòng đã chọn, lấy ra idPhongf đã chọn, đếm số khách đã chọn phòng này,>= quy định thì return  #}
+
+            if (count_so_khach_loai_phong_nay >= so_nguoi_toi_da)
+                return
+
+            let ho = tkhSection.find('input#ho').val()
+            let ten = tkhSection.find('input#ten').val()
+            let loaiKhach = tkhSection.find('select#loai-khach').val()
+            let cmnd = tkhSection.find('input#cmnd').val()
+            let diaChi = tkhSection.find('input#dia-chi').val()
+
+            $('table.khach-hang tbody').append(`
+        <tr>
+            <th scope="row">1</th>
+            <td>${ho}</td>
+            <td>${ten}</td>
+            <td>${loaiKhach}</td>
+            <td>${cmnd}</td>
+            <td>${diaChi}</td>
+            <td>${phong}</td>
+        </tr>
+        `)
+        })
+
+        function get_cac_chi_tiet_dat_phong() {
+            let cac_chi_tiet_dat_phong = []
+            $('table.khach-hang tbody tr').each(function () {
+                let td = $(this).find('td')
+                let id_phong = $(td[5]).text()
+                let phong_da_ton_tai = false
+                let ctdp = {}
+
+                $.each(cac_chi_tiet_dat_phong, (i, e) => {
+                    if (e['phong'] === id_phong) {
+                        phong_da_ton_tai = true
+                        ctdp = e
+                    }
+                })
+                {#Duyệt qua mảng để kiểm tra xem phòng đã tồn tại chưa.#}
+
+                if (!phong_da_ton_tai) {
+                    ctdp = {phong: id_phong}
+                    ctdp['khach_hang'] = []
+                }
+
+
+                ctdp['khach_hang'].push({
+                    'ten_khach_hang': $(td[0]).text() + ' ' + $(td[1]).text(),
+                    'loai_khach_hang': $(td[2]).text(),
+                    'cmnd': $(td[3]).text(),
+                    'dia_chi': $(td[4]).text(),
+                })
+                {#thêm thông tin về khách hàng vào mảng.#}
+                if (!phong_da_ton_tai) cac_chi_tiet_dat_phong.push(ctdp)
+            })
+            return cac_chi_tiet_dat_phong
+        }
+
+
+        $('button.submit').on('click', (event) => {
+            event.preventDefault()
+
+            let form = $('form')
+
+            let tenNguoiDat = form.find('input#last_name').val() + ' ' + form.find('input#first_name').val()
+            let ngayDatPhong = form.find('input#checkin').val()
+            let ngayTraPhong = form.find('input#checkout').val()
+            let cac_chi_tiet_dat_phong = get_cac_chi_tiet_dat_phong()
+
+            $.ajax({
+                type: 'POST',
+                url: `/api/booking`,
+                timeout: 1000,
+                data: JSON.stringify({
+                    'ten_nguoi_dat': tenNguoiDat,
+                    'ngay_dat_phong': ngayDatPhong,
+                    'ngay_tra_phong': ngayTraPhong,
+                    'cac_chi_tiet_dat_phong': cac_chi_tiet_dat_phong
+                }),
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                success: (data) => {
+                    // ajaxSuccess(data)
+                }
+            })
+        })
+
+        $('button.confirm-step').on('click', (event) => {
+            event.preventDefault()
+
+            let cac_chi_tiet_dat_phong = get_cac_chi_tiet_dat_phong()
+            $.ajax({
+                type: 'POST',
+                url: `/api/tinhtienphong`,
+                timeout: 1000,
+                data: JSON.stringify({
+                    'cac_chi_tiet_dat_phong': cac_chi_tiet_dat_phong
+                }),
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                success: (data) => {
+                    $('span.total').text(data.tong_tien)
+                }
+            })
+        })
+
+    </script>
+{% endblock %}

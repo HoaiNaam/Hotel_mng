@@ -1,0 +1,277 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Trang chủ{% endblock %}
+
+{% block content %}
+
+<!-- Room Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title text-center text-primary text-uppercase">Loại phòng</h6>
+            <h1 class="mb-5">Khám phá <span class="text-primary text-uppercase">Phòng</span></h1>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="room-item shadow rounded overflow-hidden">
+                    <div class="position-relative">
+                        <img class="img-fluid" src="static/img/room-1.jpg" alt="">
+                        <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">300K/Đêm</small>
+                    </div>
+                    <div class="p-4 mt-2">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5 class="mb-0">Phòng thường </h5>
+                            <div class="ps-2">
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>1
+                                giường</small>
+                            <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>1
+                                bồn tắm</small>
+                            <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
+                        </div>
+                        <p class="text-body mb-3">Diện tích 35m².Có một phòng ngủ, một phòng khách, một phòng tắm và một
+                            khu vực tiếp khách. Xem chi tiết hoặc đặt phòng ngay. </p>
+                        <div class="d-flex justify-content-between">
+                            <a class="btn btn-sm btn-primary rounded py-2 px-4" href="">Xem chi tiết</a>
+                            <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Đặt ngay</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="room-item shadow rounded overflow-hidden">
+                    <div class="position-relative">
+                        <img class="img-fluid" src="static/img/room-2.jpg" alt="">
+                        <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">1000K/Đêm</small>
+                    </div>
+                    <div class="p-4 mt-2">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5 class="mb-0">Phòng Vip</h5>
+                            <div class="ps-2">
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>1
+                                giường</small>
+                            <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>2
+                                Bồn tắm</small>
+                            <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
+                        </div>
+                        <p class="text-body mb-3">Diện tích 75m².Có hai phòng ngủ, hai phòng tắm, một phòng khách và một
+                            khu vực tiếp khách. Xem chi tiết hoặc đặt phòng ngay.</p>
+                        <div class="d-flex justify-content-between">
+                            <a class="btn btn-sm btn-primary rounded py-2 px-4" href="">Xem chi tiết</a>
+                            <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Đăt ngay</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                <div class="room-item shadow rounded overflow-hidden">
+                    <div class="position-relative">
+                        <img class="img-fluid" src="static/img/room-3.jpg" alt="">
+                        <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">2000K/Đêm</small>
+                    </div>
+                    <div class="p-4 mt-2">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5 class="mb-0">Phòng Supper</h5>
+                            <div class="ps-2">
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>1
+                                giường</small>
+                            <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>2
+                                Bồn tắm</small>
+                            <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
+                        </div>
+                        <p class="text-body mb-3">Diện tích 50m².Có một phòng ngủ, một phòng tắm và một khu vực tiếp
+                            khách. Xem chi tiết hoặc đặt phòng ngay.</p>
+                        <div class="d-flex justify-content-between">
+                            <a class="btn btn-sm btn-primary rounded py-2 px-4" href="">Xem chi tiết</a>
+                            <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Đặt ngay</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="room-item shadow rounded overflow-hidden">
+                        <div class="position-relative">
+                            <img class="img-fluid" src="static/img/room-1.jpg" alt="">
+                            <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">300K/Đêm</small>
+                        </div>
+                        <div class="p-4 mt-2">
+                            <div class="d-flex justify-content-between mb-3">
+                                <h5 class="mb-0">Phòng thường</h5>
+                                <div class="ps-2">
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>1
+                                    giường</small>
+                                <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>1
+                                    bồn tắm</small>
+                                <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
+                            </div>
+                            <p class="text-body mb-3">Diện tích 35m².Có một phòng ngủ, một phòng khách, một phòng tắm và
+                                một
+                                khu vực tiếp khách. Xem chi tiết hoặc đặt phòng ngay. </p>
+                            <div class="d-flex justify-content-between">
+                                <a class="btn btn-sm btn-primary rounded py-2 px-4" href="">Xem chi tiết</a>
+                                <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Đặt ngay</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="room-item shadow rounded overflow-hidden">
+                        <div class="position-relative">
+                            <img class="img-fluid" src="static/img/room-2.jpg" alt="">
+                            <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">1000K/Đêm</small>
+                        </div>
+                        <div class="p-4 mt-2">
+                            <div class="d-flex justify-content-between mb-3">
+                                <h5 class="mb-0">Phòng Vip</h5>
+                                <div class="ps-2">
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>1
+                                    giường</small>
+                                <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>2
+                                    Bồn tắm</small>
+                                <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
+                            </div>
+                            <p class="text-body mb-3">Diện tích 75m².Có hai phòng ngủ, hai phòng tắm, một phòng khách và
+                                một
+                                khu vực tiếp khách. Xem chi tiết hoặc đặt phòng ngay.</p>
+                            <div class="d-flex justify-content-between">
+                                <a class="btn btn-sm btn-primary rounded py-2 px-4" href="">Xem chi tiết</a>
+                                <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Đăt ngay</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="room-item shadow rounded overflow-hidden">
+                        <div class="position-relative">
+                            <img class="img-fluid" src="static/img/room-3.jpg" alt="">
+                            <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">2000K/Đêm</small>
+                        </div>
+                        <div class="p-4 mt-2">
+                            <div class="d-flex justify-content-between mb-3">
+                                <h5 class="mb-0">Phòng Supper</h5>
+                                <div class="ps-2">
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>1
+                                    giường</small>
+                                <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>2
+                                    Bồn tắm</small>
+                                <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
+                            </div>
+                            <p class="text-body mb-3">Diện tích 50m².Có một phòng ngủ, một phòng tắm và một khu vực tiếp
+                                khách. Xem chi tiết hoặc đặt phòng ngay.</p>
+                            <div class="d-flex justify-content-between">
+                                <a class="btn btn-sm btn-primary rounded py-2 px-4" href="">Xem chi tiết</a>
+                                <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Đặt ngay</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Room End -->
+
+    <!-- Testimonial Start -->
+    <div class="container-xxl testimonial my-5 py-5 bg-dark wow zoomIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="owl-carousel testimonial-carousel py-5">
+                <div class="testimonial-item position-relative bg-white rounded overflow-hidden">
+                    <p>Khách sạn Sapphire là một lựa chọn tuyệt vời cho những ai muốn tìm kiếm một nơi nghỉ dưỡng sang
+                        trọng và tiện nghi. Phòng khách sạn rộng rãi, có tầm nhìn đẹp và được trang bị đầy đủ tiện nghi.
+                        Nhân viên khách sạn chuyên nghiệp, luôn sẵn sàng phục vụ khách hàng. Tôi rất hài lòng với chuyến
+                        lưu trú của mình tại khách sạn này</p>
+                    <div class="d-flex align-items-center">
+                        <img class="img-fluid flex-shrink-0 rounded" src="static/img/testimonial-3.jpg"
+                             style="width: 45px; height: 45px;">
+                        <div class="ps-3">
+                            <h6 class="fw-bold mb-1">Anh Đông</h6>
+                            <small>Kỹ sư</small>
+                        </div>
+                    </div>
+                    <i class="fa fa-quote-right fa-3x text-primary position-absolute end-0 bottom-0 me-4 mb-n1"></i>
+                </div>
+                <div class="testimonial-item position-relative bg-white rounded overflow-hidden">
+                    <p>Tôi rất hài lòng với chuyến lưu trú của mình tại khách sạn Sapphire. Phòng khách sạn sạch sẽ,
+                        thoáng mát và đầy đủ tiện nghi. Nhân viên khách sạn nhiệt tình, chu đáo và luôn sẵn sàng giúp
+                        đỡ. Tôi chắc chắn sẽ quay lại khách sạn này trong tương lai.</p>
+                    <div class="d-flex align-items-center">
+                        <img class="img-fluid flex-shrink-0 rounded" src="static/img/testimonial-2.jpg"
+                             style="width: 45px; height: 45px;">
+                        <div class="ps-3">
+                            <h6 class="fw-bold mb-1">Anh Khánh</h6>
+                            <small>Giám đốc</small>
+                        </div>
+                    </div>
+                    <i class="fa fa-quote-right fa-3x text-primary position-absolute end-0 bottom-0 me-4 mb-n1"></i>
+                </div>
+                <div class="testimonial-item position-relative bg-white rounded overflow-hidden">
+                    <p>Tôi rất ấn tượng với dịch vụ của khách sạn Sapphire. Phòng khách sạn sạch sẽ, gọn gàng và được
+                        dọn dẹp thường xuyên. Nhân viên khách sạn thân thiện, nhiệt tình và luôn sẵn sàng giúp đỡ khách
+                        hàng. Tôi chắc chắn sẽ giới thiệu khách sạn này cho bạn bè và người thân của mình.</p>
+                    <div class="d-flex align-items-center">
+                        <img class="img-fluid flex-shrink-0 rounded" src="static/img/testimonial-1.jpg"
+                             style="width: 45px; height: 45px;">
+                        <div class="ps-3">
+
+                            <h6 class="fw-bold mb-1">Chị Nhung</h6>
+                            <small>Người mẫu</small>
+                        </div>
+                    </div>
+                    <i class="fa fa-quote-right fa-3x text-primary position-absolute end-0 bottom-0 me-4 mb-n1"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+
+    {% endblock %}

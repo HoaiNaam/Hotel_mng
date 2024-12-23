@@ -1,0 +1,50 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLongTitle">Hóa đơn</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <table class="table table-hover table-bordered searchable">
+        <tr>
+            <td>
+                <b>ID phiếu thuê:</b>
+            </td>
+            <td>
+                {{ data.id_phieu_thue }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Tên người đặt:</b>
+            </td>
+            <td>
+                {{ data.ten_nguoi_dat }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Ngày đặt phòng:</b>
+            </td>
+            <td>
+                {{ data.ngay_dat_phong }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Ngày trả phòng:</b>
+            </td>
+            <td>
+                {{ data.ngay_tra_phong }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Tổng tiền:</b>
+            </td>
+            <td>
+                {{ data.tong_tien }}
+            </td>
+        </tr>
+    </table>
+</div>
